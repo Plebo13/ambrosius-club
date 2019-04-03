@@ -1,0 +1,19 @@
+{
+  "name": "ambrosius-strikes",
+  "version": "1.0.0",
+  "description": "Simple web application for tracing the strikes in the great Ambrosius Club",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Plebo13/ambrosius-strikes.git"
+  },
+  "author": "Lukas Brauckmann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Plebo13/ambrosius-strikes/issues"
+  },
+  "homepage": "https://github.com/Plebo13/ambrosius-strikes#readme"
+}
