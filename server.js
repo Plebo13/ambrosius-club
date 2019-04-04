@@ -1,12 +1,18 @@
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/ambrosius-strikes";
+const PORT = 8080;
 
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("ambrosius-strikes");
-  dbo.collection("members").find({}, { projection: { _id: 0, name: 1 } }).toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    db.close();
-  });
+var express = require('express');
+var path = require('path');
+var MongoClient = require('mongodb').MongoClient;
+
+var app = express();
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'public')));
+
+var url = "mongodb://localhost:27017/ambrosius";
+
+app.get('/', function(req, res) {
+  res.render('index');
 });
+
+app.listen(PORT);
+console.log('Server listen at port ' + PORT);
