@@ -20,6 +20,6 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "mongodb": "^3.2.2",
-    "semantic-ui-css": "^2.4.1"
+    "semantic-ui": "^2.4.2"
   }
 }
