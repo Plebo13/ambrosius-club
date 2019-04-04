@@ -2,7 +2,7 @@
   "name": "ambrosius-strikes",
   "version": "1.0.0",
   "description": "Simple web application for tracing the strikes in the great Ambrosius Club",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Plebo13/ambrosius-strikes/issues"
   },
-  "homepage": "https://github.com/Plebo13/ambrosius-strikes#readme"
+  "homepage": "https://github.com/Plebo13/ambrosius-strikes#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongodb": "^3.2.2",
+    "semantic-ui-css": "^2.4.1"
+  }
 }
