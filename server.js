@@ -24,8 +24,9 @@ app.use(passport.session());
 
 mongoose.connect('mongodb://localhost:27017/ambrosius');
 require('./models/member');
-
+require("./models/strike");
 const Member = mongoose.model('members');
+const Strike = mongoose.model('strikes');
 
 passport.serializeUser(function(user, cb) {
   cb(null, user.id);
@@ -78,8 +79,18 @@ app.get('/calendar', function(req, res) {
 });
 
 app.get('/strikes', function(req, res) {
-  res.render('strikes', {
-    user: req.user.name
+  Strike.find({}, function(err, strikes) {
+    if (strikes) {
+      res.render('strikes', {
+        user: req.user.name,
+        strikes: strikes
+      });
+    } else {
+      res.render('strikes', {
+        user: req.user.name,
+        strikes: []
+      });
+    }
   });
 });
 
@@ -92,9 +103,7 @@ app.post('/login',
     failureRedirect: '/login'
   }),
   function(req, res) {
-    res.render('strikes', {
-      user: req.user.name
-    });
+    res.redirect('/strikes');
   });
 
 app.listen(PORT);

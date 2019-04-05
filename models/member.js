@@ -7,6 +7,8 @@ const Member = new Schema({
   member_id: Number,
   name: String,
   username: String,
+  admin: Boolean,
+  board: Boolean,
   password_hash: String,
   salt: String,
 });
