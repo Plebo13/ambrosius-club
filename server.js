@@ -23,31 +23,27 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 mongoose.connect('mongodb://localhost:27017/ambrosius');
-const Schema = mongoose.Schema;
-const UserDetail = new Schema({
-  member_id: Number,
-  name: String,
-  password: String
-});
-const UserDetails = mongoose.model('members', UserDetail, 'members');
+require('./models/member');
+
+const Member = mongoose.model('members');
 
 passport.serializeUser(function(user, cb) {
   cb(null, user.id);
 });
 
 passport.deserializeUser(function(id, cb) {
-  UserDetails.findById(id, function(err, user) {
+  Member.findById(id, function(err, user) {
     cb(err, user);
   });
 });
 
 passport.use(new LocalStrategy({
-    usernameField: 'member',
+    usernameField: 'username',
     passwordField: 'password'
   },
   function(username, password, done) {
-    UserDetails.findOne({
-      name: username
+    Member.findOne({
+      username: username
     }, function(err, user) {
       if (err) {
         console.log(err);
@@ -58,7 +54,7 @@ passport.use(new LocalStrategy({
         return done(null, false);
       }
 
-      if (user.password != password) {
+      if (!user.validatePassword(password)) {
         return done(null, false);
       }
       return done(null, user);
@@ -73,6 +69,12 @@ app.get('/', function(req, res) {
   } else {
     res.redirect('/login');
   }
+});
+
+app.get('/calendar', function(req, res) {
+  res.render('calendar', {
+    user: req.user.name
+  });
 });
 
 app.get('/strikes', function(req, res) {
