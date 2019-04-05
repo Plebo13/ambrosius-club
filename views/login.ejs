@@ -26,6 +26,33 @@
     }
   </style>
 
+  <script>
+    $(document)
+      .ready(function() {
+        $('.ui.form')
+          .form({
+            fields: {
+              email: {
+                identifier: 'member',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please enter your e-mail'
+                  }
+                ]
+              },
+              password: {
+                identifier: 'password',
+                rules: [{
+                    type: 'empty',
+                    prompt: 'Please enter your password'
+                  }
+                ]
+              }
+            }
+          });
+      });
+  </script>
+
 </head>
 
 <body>
@@ -36,18 +63,18 @@
           Login
         </div>
       </h2>
-      <form class="ui large form" action="/login" method="post">
+      <form action="/login" method="POST" class="ui form">
         <div class="ui stacked segment">
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <input type="text" name="email" placeholder="Mitglied" data-cip-id="jQuery342845639">
+              <input type="text" name="member" placeholder="Mitglied">
             </div>
           </div>
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <input type="password" name="password" placeholder="Passwort" data-cip-id="jQuery342845640">
+              <input type="password" name="password" placeholder="Passwort">
             </div>
           </div>
           <div class="ui fluid large teal submit button">Login</div>
