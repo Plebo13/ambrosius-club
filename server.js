@@ -21,11 +21,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(session({
   name: "session",
-  secret: "ambr0siu$Club",
-  cookie: {
-    httpOnly: true,
-    expires: expiryDate
-  }
+  secret: "ambr0siu$Club"
 }));
 app.use(helmet());
 app.use(passport.initialize());
