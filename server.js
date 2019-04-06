@@ -13,7 +13,7 @@ const helmet = require('helmet');
 
 // Setup
 var app = express();
-var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+var expiryDate = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
@@ -22,11 +22,11 @@ app.use(bodyParser.urlencoded({
 app.use(session({
   name: 'session',
   secret: 'ambr0siu$Club',
-  cookie: { httpOnly: true,
-            expires: expiryDate
-          }
-  })
-);
+  cookie: {
+    httpOnly: true,
+    expires: expiryDate
+  }
+}));
 app.use(helmet());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -85,6 +85,11 @@ app.post('/login',
   function(req, res) {
     res.redirect('/strikes');
   });
+
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/login');
+});
 
 
 // Exe
