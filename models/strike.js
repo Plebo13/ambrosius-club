@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const Strike = new Schema({
+const StrikeSchema = new Schema({
   name: String,
   date: Date,
   reason: String
 });
 
-mongoose.model('strikes', Strike);
+mongoose.model('strikes', StrikeSchema);
