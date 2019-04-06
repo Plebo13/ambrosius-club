@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const crypto = require('crypto');
+const mongoose = require("mongoose");
+const crypto = require("crypto");
 
 const Schema = mongoose.Schema;
 
@@ -23,4 +23,4 @@ Member.methods.validatePassword = function(password) {
   return this.password_hash === password_hash;
 };
 
-mongoose.model('members', Member);
+mongoose.model("members", Member);

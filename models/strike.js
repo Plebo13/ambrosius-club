@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
@@ -8,4 +8,4 @@ const StrikeSchema = new Schema({
   reason: String
 });
 
-mongoose.model('strikes', StrikeSchema);
+mongoose.model("strikes", StrikeSchema);
