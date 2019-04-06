@@ -64,12 +64,16 @@ passport.use(new LocalStrategy({
 ));
 
 // Routes
-app.get('/', function(req, res) {
-  if (req.user) {
-    res.redirect('/strikes');
+app.use('/', function(req, res, next) {
+  if (req.user || req.originalUrl == "/login") {
+    next();
   } else {
     res.redirect('/login');
   }
+});
+
+app.get('/', function(req, res) {
+  res.redirect('/strikes');
 });
 
 app.get('/calendar', function(req, res) {
