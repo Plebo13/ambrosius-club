@@ -8,7 +8,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const helmet = require('helmet');
 
 
 // Setup
@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(session({
   secret: 'ambr0siu$Club'
 }));
+app.use(helmet());
 app.use(passport.initialize());
 app.use(passport.session());
 
