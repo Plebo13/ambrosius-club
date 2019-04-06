@@ -1,5 +1,6 @@
 const PORT = 8080;
 
+
 // Imports
 const express = require('express');
 const session = require("express-session");
@@ -8,6 +9,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+
 
 // Setup
 var app = express();
@@ -25,43 +27,10 @@ app.use(passport.session());
 mongoose.connect('mongodb://localhost:27017/ambrosius');
 require('./models/member');
 require("./models/strike");
-const Member = mongoose.model('members');
 const Strike = mongoose.model('strikes');
 
-passport.serializeUser(function(user, cb) {
-  cb(null, user.id);
-});
+require('./config/passport');
 
-passport.deserializeUser(function(id, cb) {
-  Member.findById(id, function(err, user) {
-    cb(err, user);
-  });
-});
-
-passport.use(new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password'
-  },
-  function(username, password, done) {
-    Member.findOne({
-      username: username
-    }, function(err, user) {
-      if (err) {
-        console.log(err);
-        return done(err);
-      }
-
-      if (!user) {
-        return done(null, false);
-      }
-
-      if (!user.validatePassword(password)) {
-        return done(null, false);
-      }
-      return done(null, user);
-    });
-  }
-));
 
 // Routes
 app.use('/', function(req, res, next) {
@@ -110,5 +79,7 @@ app.post('/login',
     res.redirect('/strikes');
   });
 
+
+// Exe
 app.listen(PORT);
 console.log('Server listen at port ' + PORT);
