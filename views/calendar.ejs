@@ -3,37 +3,49 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-  <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="semantic/dist/semantic.min.js"></script>
+  <title>Kalender</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 
 <body>
-  <div class="ui fixed inverted menu">
-    <div class="ui container">
-      <a href="" class="header item">
-        Ambrosius Club
-      </a>
-      <a href="/strikes" class="item">Strikes</a>
-      <a href="/calendar" class="item">Kalender</a>
-      <div class="ui simple dropdown item">
-        <%= user.name %> <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item" href="">Einstellungen</a>
-          <a class="item" href="/logout">Logout</a>
-        </div>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d6d6c2;">
+    <a class="navbar-brand" href="#">Ambrosius Club</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/strikes">Strikes <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/calendar">Kalendar</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= user.name %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Einstellungen</a>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </nav>
+
+  <div class="container-fluid">
+    <iframe
+      src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=550&amp;wkst=2&amp;hl=de&amp;bgcolor=%23ffffff&amp;src=tmh68hrb7pd07hpdigat99u9ic%40group.calendar.google.com&amp;color=%23A32929&amp;ctz=Europe%2FBerlin"
+      style="border-width:0" width="1000" height="590" frameborder="0" scrolling="no"></iframe>
   </div>
 
-  <div class="column stackable ui grid">
-    <div class="column">
-      <iframe
-        src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=550&amp;wkst=2&amp;hl=de&amp;bgcolor=%23ffffff&amp;src=tmh68hrb7pd07hpdigat99u9ic%40group.calendar.google.com&amp;color=%23A32929&amp;ctz=Europe%2FBerlin"
-        style="border-width:0" width="1000" height="590" frameborder="0" scrolling="no"></iframe>
-    </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
